@@ -1,0 +1,141 @@
+:root{
+  --bg-page: #f5f7fb;
+  --dark: #1f2d3d;
+  --accent: #1f77b4;
+  --white: #ffffff;
+  --muted: #444;
+}
+
+/* Lien "skip" : caché visuellement sauf au focus */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  position: static;
+  left: 0;
+  width: auto;
+  height: auto;
+  padding: 8px 12px;
+  background: var(--accent);
+  color: var(--white);
+  z-index: 1000;
+  display: inline-block;
+  margin: 8px;
+  border-radius: 4px;
+}
+
+/* Body */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  margin: 0;
+  background-color: var(--bg-page);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background-color: var(--dark);
+  color: var(--white);
+  padding: 18px 16px;
+}
+
+/* Nav : display inline-block et largeur ~80% */
+nav {
+  display: inline-block;
+  width: 80%;
+  background-color: var(--accent);
+  padding: 8px 12px;
+  margin-top: 8px;
+  border-radius: 4px;
+}
+nav a { color: var(--white); text-decoration: none; margin-right: 8px; }
+
+/* Descendant selector : style uniquement l'image DANS la nav (environ 10%) */
+nav img {
+  width: 10%;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* Main */
+main {
+  background-color: var(--white);
+  font-size: 16px;
+  padding: 20px;
+  max-width: 980px;
+  margin: 18px auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* Footer */
+footer {
+  background-color: var(--dark);
+  color: var(--white);
+  padding: 12px;
+  text-align: center;
+}
+
+/* --------------------
+   NOTE: La règle li précédente a été COMMENTÉE comme demandé
+   -------------------- */
+/*
+ul.galerie-list li {
+  display: inline-block;
+  width: calc(33.333% - 8px);
+  box-sizing: border-box;
+  vertical-align: top;
+}
+*/
+
+/* GRID : deux colonnes ~40% chacune */
+.grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 40% 40%;
+  justify-content: center; /* centrer la grille dans le conteneur */
+  align-items: start;
+  row-gap: 16px;
+  column-gap: 20px;
+}
+
+/* Style seulement les images DANS .grid (ne touche pas aux images ailleurs, ex .flex) */
+.grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+/* FLEX : règle pour les sections qui utiliseront flex */
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+}
+.flex img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Titres et paragraphes */
+h1 { text-align: center; font-family: Georgia, serif; color: var(--white); margin: 0; }
+h2 { color: var(--dark); }
+p { line-height: 1.7; color: var(--muted); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+  nav { width: 100%; display: block; }
+  nav img { width: 20%; }
+}
